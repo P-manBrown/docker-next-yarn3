@@ -1,14 +1,12 @@
-FROM node:16.16.0
+ARG NODE_IMAGE_TAG
+FROM node:${NODE_IMAGE_TAG}
 
 ARG PROJECT_NAME
-ARG USER_NAME=node
 ENV TZ=Asia/Tokyo
 
-RUN corepack enable npm
-
-USER ${USER_NAME}
-
+RUN corepack enable
+USER node
 WORKDIR /${PROJECT_NAME}
 
-EXPOSE 3000
+EXPOSE 3000 9229
 CMD ["yarn", "dev"]

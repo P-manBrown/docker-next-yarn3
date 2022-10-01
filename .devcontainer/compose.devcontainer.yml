@@ -2,12 +2,13 @@ services:
   frontend:
     build:
       context: .
-      dockerfile: ./.devcontainer/vscode.Dockerfile
+      dockerfile: ./.devcontainer/Dockerfile
     volumes:
-      - bashlog:/bashlog
+      - bashlog:/home/node/bashlog
+      - gh-config:/home/node/.config/gh
       - vscode-extensions:/home/node/.vscode-server/extensions
     command: /bin/sh -c "while sleep 1000; do :; done"
 volumes:
   bashlog:
+  gh-config:
   vscode-extensions:
-  
